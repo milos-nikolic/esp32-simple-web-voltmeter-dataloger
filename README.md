@@ -1,4 +1,4 @@
-# Arduiono-esp32-simple-web-voltmeter-dataloger
+# esp32-simple-web-voltmeter-dataloger
 
 
 
