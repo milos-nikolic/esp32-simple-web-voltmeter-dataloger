@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+section,
+footer {
+    margin: 3;
+    padding: 0px; /* tweaked from 0 to 1px */
+}
+
+header {
+    background-color: red;
+}
+
+section {
+    background-color: silver;
+}
+
+footer {
+    background-color: yellow;
+}

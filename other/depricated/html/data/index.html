@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Simple Display</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="jquery.mobile.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="jquery.mobile.min.js"></script>
+</head>
+
+<script type="text/javascript">
+
+    var server = window.location.hostname;
+    var topics = {};
+    var wsUriC = "ws://" + server + ":8080/myapp";
+    var ws;
+
+    function wsConnectC() {
+
+        console.log("connect", wsUriC);
+        ws = new WebSocket(wsUriC);
+
+        
+        ws.onmessage = function (msg) {
+            var line = "";
+            console.log(msg.data);
+            var fromPage = JSON.parse(msg.data);
+            if (fromPage.part1 != "") $("#part1").html(fromPage.part1); else $("#part1").html("!Empty!");
+            $("#part2").html(fromPage.part2 + "c");
+        }
+        ws.onopen = function () {
+            $("#status").html("connected");
+            console.log("connected");
+        }
+        ws.onclose = function () {
+            $("#status").html("not connected");
+            setTimeout(wsConnectC, 1000);
+        }
+    }
+    function sendMessage() {
+        // send message back to page in simple JSON format
+        // example {“part1”:”Hello”,”part2”:”50”}
+        var toPage = '{"part1":"' + $("#txtMsg_1").val() + '","part2":"' + $("#slider_1").val() + '","part3":"3"}';
+        ws.send(toPage);
+    } // end sendMessage
+
+</script>
+
+<body onload="wsConnectC();" onunload="ws.disconnect;">
+    <div data-role="page" id="one">
+        <div data-role="header">
+            <h1>Websockets Test Page</h1>
+        </div>
+        <div role="main" class="ui-content">
+            <h1>Motor Control</h1>
+            <div id="status">not connected</div>
+            <input id="txtMsg_1" />
+            <div id="part1">!Empty!</div>
+            <hr />
+            <div id="part2">0</div>
+            <hr />
+            <label for="slider_1">Input slider:</label>
+            <input type="range" id="slider_1" value="50" min="0" max="100" />
+            <input type="button" value="Update" onClick="sendMessage()" />
+        </div>
+    </div>
+</body>
+
+</html>

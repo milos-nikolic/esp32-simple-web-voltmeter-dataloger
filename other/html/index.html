@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Headcwarters</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+  <style>
+    body {
+      margin: 0px;
+      font-size: 17px;
+      font-family: arial;
+      background: #f4f4f4;
+      line-height: 1.5em;
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1px;
+      text-align: center;
+      border-bottom: 4px #000 solid;
+      margin-bottom: 0px;
+    }
+
+    #container {
+      width: 90%;
+      margin: auto;
+      padding: 10px;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 20% 80%;
+      /*
+                grid-column-gap:1em;
+                grid-row-gap:1em;
+            */
+      /*grid-gap:1em;*/
+      margin: 0;
+      padding: 0;
+    }
+
+    table,
+    th,
+    td {
+      border: 3px solid black;
+      border-collapse: collapse;
+    }
+
+    #t01 {
+      margin: 5px;
+    }
+
+    #t01 tr:nth-child(even) {
+      background-color: #eee;
+    }
+
+    #t01 tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    #t01 th {
+      color: white;
+      background-color: black;
+    }
+  </style>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+</head>
+
+
+<body>
+  <header>
+    <h1>0.000 V</h1>
+  </header>
+
+  <header>
+    <h1>0.000 V</h1>
+  </header>
+
+  <header>
+    <h1>0.000 V</h1>
+  </header>
+
+  <header>
+    <h1>0.000 V</h1>
+  </header>
+
+  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+  <input id="id1" type="double" max="100">
+  <button onclick="myFunction()">OK</button>
+  <input id="id1" type="double" max="100">
+  <button onclick="myFunction()">OK</button>
+  <input id="id1" type="double" max="100">
+  <button onclick="myFunction()">OK</button>
+  <input id="id1" type="double" max="100">
+  <button onclick="myFunction()">OK</button>
+
+  <script src="canvasjs.min.js"></script>
+
+  <div id="container">
+
+    <table id="t01" class="contentMeny" style="width:100%">
+      <tr>
+        <td>0001</td>
+        <td>1.0265</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>0001</td>
+        <td>1.0265</td>
+        <td>V</td>
+      </tr>
+      <tr>
+        <td>0001</td>
+        <td>1.0265</td>
+        <td>V</td>
+        
+      </tr>
+    </table>
+
+
+  </div>
+
+  </div>
+  <script>
+
+
+    console.log('Taking a break1...');
+    var i = 0;
+    $('ul#list li:first').css('color', 'red');
+    var audio = new Audio('Click1.mp3');
+
+    $("#list").mousedown(function () {
+
+      i = i + 1;
+      audio.play();
+
+      $("h1.second").replaceWith("<h1 class=\"inner second\">" + i + "</h1>");
+      //$('#list').append('<li>M</li>');
+
+      $.get("http://google.com", function (data) {
+        $(".result").html(data);
+        alert("Load was performed.");
+        console.log();
+      })
+    });
+
+
+  </script>
+  <script>
+    window.onload = function () {
+
+      var dps = []; // dataPoints
+      var chart = new CanvasJS.Chart("chartContainer", {
+        title: {
+          text: "Volt chart"
+        },
+        data: [{
+          type: "line",
+          dataPoints: dps
+        }]
+      });
+
+      var xVal = 0;
+      var yVal = 100;
+      var updateInterval = 200;
+      var dataLength = 50; // number of dataPoints visible at any point
+
+      var updateChart = function (count) {
+
+        count = count || 1;
+
+        for (var j = 0; j < count; j++) {
+          yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
+          dps.push({
+            x: xVal,
+            y: yVal
+          });
+          xVal++;
+        }
+
+        if (dps.length > dataLength) {
+          dps.shift();
+        }
+
+        chart.render();
+      };
+
+      updateChart(dataLength);
+      setInterval(function () { updateChart() }, updateInterval);
+
+    }
+  </script>
+</body>
+
+
+</html>
