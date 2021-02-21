@@ -1,5 +1,0 @@
-Evo jedna zanimljiva stvar na kojij sam radio ovih dana. 
-Analog to digitasl data-loger zasnovan na esp32 i arduinu. 
-Motivacija ovoga je prosta platfrma na kojoj se mogu zabeleziti i analizirati setovi uzoraka AD konvertora sa samo par klikova (copy/paste + microsoft exel).
-Isto tako ovo je primer kako se moze napraviti jedna veoma koristna stvar bez nekakvih preteranih frejmorka i API-a. Kao i to da nemoraju uvek da se prave device-specific aplikacije. Koriscenjem samo bazicnih tehnologija (c++, html, javasctipt).
-#homemade 
