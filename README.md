@@ -27,13 +27,7 @@
 
 ------
 
-![](https://raw.githubusercontent.com/milosnikolic93/esp32-simple-web-voltmeter-dataloger/main/other/Screenshot%202021-01-18%20120601.jpg)
+![](https://raw.githubusercontent.com/milosnikolic93/esp32-simple-web-voltmeter-dataloger/main/other/main_page.jpg)
 
 
-
-https://randomnerdtutorials.com/esp32-adc-analog-read-arduino-ide/
-
-https://forum.arduino.cc/index.php?topic=633429.0
-
-https://stackoverflow.com/questions/247483/http-get-request-in-javascript
 
