@@ -26,10 +26,8 @@
 - Html frontend (Graph and table of data)
 
 ------
-<center>
 
-![](https://raw.githubusercontent.com/milosnikolic93/esp32-simple-web-voltmeter-dataloger/main/other/main_page.jpg)
+![](https://storage.googleapis.com/my-bucket-permanent/meta/Screenshot%202021-01-18%20120601.jpg)
 
-</center>
 
 
